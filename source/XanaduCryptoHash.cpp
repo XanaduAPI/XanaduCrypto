@@ -7,14 +7,30 @@
 #include "SHA1/XanaduCryptoHashSHA1.h"
 #include "SHA2/XanaduCryptoHashSHA2.h"
 
+class XCryptoHashPrivate
+{
+public:
+	XCryptoHash::Algorithm		_Algorithm;
+	union
+	{
+		XANADU_CRYPTO_MD5_CONTEXT	_MD5Context;
+		XANADU_CRYPTO_SHA1_CONTEXT	_SHA1Context;
+	};
+	XByteArray			_Result;
+};
+
 /// Structure
 XCryptoHash::XCryptoHash(Algorithm _Algorithm) XANADU_NOTHROW
 {
+	this->_Info = XANADU_NEW XCryptoHashPrivate();
+	this->_Info->_Algorithm = _Algorithm;
+	this->Reset();
 }
 
 /// Virtual destructor
 XCryptoHash::~XCryptoHash() XANADU_NOTHROW
 {
+	XANADU_DELETE_PTR(this->_Info);
 }
 
 
@@ -23,11 +39,29 @@ XCryptoHash::~XCryptoHash() XANADU_NOTHROW
 /// Empty data
 void XCryptoHash::Reset() XANADU_NOTHROW
 {
+	switch (this->_Info->_Algorithm)
+	{
+		case MD5:
+			Xanadu::MD5_Init(&(this->_Info->_MD5Context));
+			break;
+		case SHA1:
+			Xanadu::sha1_begin(&(this->_Info->_SHA1Context));
+			break;
+	}
 }
 
 /// Add Data
 void XCryptoHash::AppendData(const void* _Data, int64U _Length) XANADU_NOTHROW
 {
+	switch (this->_Info->_Algorithm)
+	{
+		case MD5:
+			Xanadu::MD5_Update(&(this->_Info->_MD5Context), _Data, _Length);
+			break;
+		case SHA1:
+			Xanadu::sha1_hash((const unsigned char*)_Data, _Length, &(this->_Info->_SHA1Context));
+			break;
+	}
 }
 
 /// Add Data
@@ -39,7 +73,21 @@ void XCryptoHash::AppendData(const XByteArray& _Bytes) XANADU_NOTHROW
 /// View the results
 XByteArray XCryptoHash::Result() const XANADU_NOTHROW
 {
-	return XByteArray();
+	if (this->_Info->_Result.isEmpty())
+	{
+		unsigned char 		vResult[128] = {0};
+		switch (this->_Info->_Algorithm)
+		{
+			case MD5:
+				Xanadu::MD5_Final(vResult, &(this->_Info->_MD5Context));
+				break;
+			case SHA1:
+				Xanadu::sha1_end(vResult, &(this->_Info->_SHA1Context));
+				break;
+		}
+		this->_Info->_Result = XByteArray((const char*)vResult, XCryptoHash::HashLength(this->_Info->_Algorithm));
+	}
+	return this->_Info->_Result;
 }
 
 
@@ -92,9 +140,9 @@ int32S XCryptoHash::HashLength(Algorithm _Algorithm) XANADU_NOTHROW
 	switch (_Algorithm)
 	{
 		case MD5:
-			return 32;
+			return 16;
 		case SHA1:
-			return 40;
+			return 20;
 		default:
 			return 0;
 	}

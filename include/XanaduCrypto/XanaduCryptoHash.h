@@ -7,16 +7,23 @@
 
 #include <XanaduCrypto/XanaduCryptoHeader.h>
 
+class XCryptoHashPrivate;
+
 /// A public class that evaluates the hash value.
 /// Contains common algorithm such as MD5, SHA1, SHA256.
 class XANADU_CRYPTO_EXPORT XCryptoHash
 {
+public:
 	/// Enumeration of common algorithms
 	enum Algorithm
 	{
 		MD5 = 0,
 		SHA1,
 	};
+
+private:
+	/// Private structures
+	XCryptoHashPrivate*		_Info;
 
 public:
 	/// Structure

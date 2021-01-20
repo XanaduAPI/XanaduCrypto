@@ -48,31 +48,31 @@
 	SET(n)
 #else
 #define SET(n) \
-	(ctx->block[(n)] = \
+	(_Context->block[(n)] = \
 	(int32U)ptr[(n) * 4] | \
 	((int32U)ptr[(n) * 4 + 1] << 8) | \
 	((int32U)ptr[(n) * 4 + 2] << 16) | \
 	((int32U)ptr[(n) * 4 + 3] << 24))
 #define GET(n) \
-	(ctx->block[(n)])
+	(_Context->block[(n)])
 #endif
 
 /*
- * This processes one or more 64-byte data blocks, but does NOT update the bit
+ * This processes one or more 64-byte _Data blocks, but does NOT update the bit
  * counters.  There are no alignment requirements.
  */
-static const void* body(XANADU_CRYPTO_MD5_CONTEXT *ctx, const void *data, unsigned long size)
+static const void* body(XANADU_CRYPTO_MD5_CONTEXT* _Context, const void* _Data, unsigned long _Size)
 {
 	const unsigned char *ptr;
 	int32U a, b, c, d;
 	int32U saved_a, saved_b, saved_c, saved_d;
 
-	ptr = (const unsigned char *)data;
+	ptr = (const unsigned char *)_Data;
 
-	a = ctx->a;
-	b = ctx->b;
-	c = ctx->c;
-	d = ctx->d;
+	a = _Context->a;
+	b = _Context->b;
+	c = _Context->c;
+	d = _Context->d;
 
 	do {
 		saved_a = a;
@@ -158,39 +158,39 @@ static const void* body(XANADU_CRYPTO_MD5_CONTEXT *ctx, const void *data, unsign
 		d += saved_d;
 
 		ptr += 64;
-	} while (size -= 64);
+	} while (_Size -= 64);
 
-	ctx->a = a;
-	ctx->b = b;
-	ctx->c = c;
-	ctx->d = d;
+	_Context->a = a;
+	_Context->b = b;
+	_Context->c = c;
+	_Context->d = d;
 
 	return ptr;
 }
 
-XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::MD5_Init(XANADU_CRYPTO_MD5_CONTEXT *ctx) XANADU_NOTHROW
+XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::MD5_Init(XANADU_CRYPTO_MD5_CONTEXT* _Context) XANADU_NOTHROW
 {
-	ctx->a = 0x67452301;
-	ctx->b = 0xefcdab89;
-	ctx->c = 0x98badcfe;
-	ctx->d = 0x10325476;
+	_Context->a = 0x67452301;
+	_Context->b = 0xefcdab89;
+	_Context->c = 0x98badcfe;
+	_Context->d = 0x10325476;
 
-	ctx->lo = 0;
-	ctx->hi = 0;
+	_Context->lo = 0;
+	_Context->hi = 0;
 }
 
-XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::MD5_Update(XANADU_CRYPTO_MD5_CONTEXT *ctx, const void *data, int64U size) XANADU_NOTHROW
+XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::MD5_Update(XANADU_CRYPTO_MD5_CONTEXT* _Context, const void* _Data, int64U _Size) XANADU_NOTHROW
 {
 	auto 		saved_lo = static_cast<int32U>(0U);
 	auto 		used = static_cast<int64U>(0U);
 	auto 		available = static_cast<int64U>(0U);
 
-	saved_lo = ctx->lo;
-	if ((ctx->lo = (saved_lo + size) & 0x1fffffff) < saved_lo)
+	saved_lo = _Context->lo;
+	if ((_Context->lo = (saved_lo + _Size) & 0x1fffffff) < saved_lo)
 	{
-		ctx->hi++;
+		_Context->hi++;
 	}
-	ctx->hi += size >> 29;
+	_Context->hi += _Size >> 29;
 
 	used = saved_lo & 0x3f;
 
@@ -198,61 +198,62 @@ XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::MD5_Update(XANADU_CRYPTO_MD5_CONTEXT
 	{
 		available = 64 - used;
 
-		if (size < available)
+		if (_Size < available)
 		{
-			Xanadu::memcpy(&ctx->buffer[used], data, size);
+			Xanadu::memcpy(&_Context->buffer[used], _Data, _Size);
 			return;
 		}
 
-		Xanadu::memcpy(&ctx->buffer[used], data, available);
-		data = (const unsigned char *)data + available;
-		size -= available;
-		body(ctx, ctx->buffer, 64);
+		Xanadu::memcpy(&_Context->buffer[used], _Data, available);
+		_Data = (const unsigned char *)_Data + available;
+		_Size -= available;
+		body(_Context, _Context->buffer, 64);
 	}
 
-	if (size >= 64) {
-		data = body(ctx, data, size & ~(unsigned long)0x3f);
-		size &= 0x3f;
+	if (_Size >= 64)
+	{
+		_Data = body(_Context, _Data, _Size & ~(unsigned long)0x3f);
+		_Size &= 0x3f;
 	}
 
-	Xanadu::memcpy(ctx->buffer, data, size);
+	Xanadu::memcpy(_Context->buffer, _Data, _Size);
 }
 
-#define OUT(dst, src) \
+#define MD5_OUT(dst, src) \
 	(dst)[0] = (unsigned char)(src); \
 	(dst)[1] = (unsigned char)((src) >> 8); \
 	(dst)[2] = (unsigned char)((src) >> 16); \
 	(dst)[3] = (unsigned char)((src) >> 24);
 
-XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::MD5_Final(unsigned char *result, XANADU_CRYPTO_MD5_CONTEXT *ctx) XANADU_NOTHROW
+XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::MD5_Final(unsigned char* _Result, XANADU_CRYPTO_MD5_CONTEXT* _Context) XANADU_NOTHROW
 {
 	unsigned long used, available;
 
-	used = ctx->lo & 0x3f;
+	used = _Context->lo & 0x3f;
 
-	ctx->buffer[used++] = 0x80;
+	_Context->buffer[used++] = 0x80;
 
 	available = 64 - used;
 
 	if (available < 8) {
-		memset(&ctx->buffer[used], 0, available);
-		body(ctx, ctx->buffer, 64);
+		memset(&_Context->buffer[used], 0, available);
+		body(_Context, _Context->buffer, 64);
 		used = 0;
 		available = 64;
 	}
 
-	Xanadu::memset(&ctx->buffer[used], 0, available - 8);
+	Xanadu::memset(&_Context->buffer[used], 0, available - 8);
 
-	ctx->lo <<= 3;
-	OUT(&ctx->buffer[56], ctx->lo)
-	OUT(&ctx->buffer[60], ctx->hi)
+	_Context->lo <<= 3;
+	MD5_OUT(&_Context->buffer[56], _Context->lo)
+	MD5_OUT(&_Context->buffer[60], _Context->hi)
 
-	body(ctx, ctx->buffer, 64);
+	body(_Context, _Context->buffer, 64);
 
-	OUT(&result[0], ctx->a)
-	OUT(&result[4], ctx->b)
-	OUT(&result[8], ctx->c)
-	OUT(&result[12], ctx->d)
+	MD5_OUT(&_Result[0], _Context->a)
+	MD5_OUT(&_Result[4], _Context->b)
+	MD5_OUT(&_Result[8], _Context->c)
+	MD5_OUT(&_Result[12], _Context->d)
 
-	Xanadu::memset(ctx, 0, sizeof(*ctx));
+	Xanadu::memset(_Context, 0, sizeof(*_Context));
 }

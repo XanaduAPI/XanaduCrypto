@@ -1,27 +1,25 @@
 ﻿#ifndef			_XANADU_CRYPTO_HASH_SHA1_H_
 #define			_XANADU_CRYPTO_HASH_SHA1_H_
 
-#define SHA_1
-
-/* define for bit or byte oriented SHA   */
-#if 1
-#  define SHA1_BITS 0   /* byte oriented */
-#else
-#  define SHA1_BITS 1   /* bit oriented  */
-#endif
-
 #include <XanaduCrypto/XanaduCryptoHeader.h>
 
-#define SHA1_BLOCK_SIZE  64
-#define SHA1_DIGEST_SIZE 20
+/// define for bit or byte oriented SHA
+#if 1
+#  define SHA1_BITS		0   /* byte oriented */
+#else
+#  define SHA1_BITS		1   /* bit oriented  */
+#endif
 
-/* type to hold the SHA256 context  */
+#define SHA1_BLOCK_SIZE		64
+#define SHA1_DIGEST_SIZE	20
+
+/// type to hold the SHA256 context
 typedef struct _XANADU_CRYPTO_SHA1_CONTEXT
 {
 	int32U			count[2];
 	int32U			hash[SHA1_DIGEST_SIZE >> 2];
 	int32U			wbuf[SHA1_BLOCK_SIZE >> 2];
-} XANADU_CRYPTO_SHA1_CONTEXT;
+}XANADU_CRYPTO_SHA1_CONTEXT;
 
 /* Note that these prototypes are the same for both bit and */
 /* byte oriented implementations. However the length fields */

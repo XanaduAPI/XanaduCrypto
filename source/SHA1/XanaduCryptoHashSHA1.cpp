@@ -1,10 +1,5 @@
 ﻿#include "XanaduCryptoHashSHA1.h"
 
-#if defined(__cplusplus)
-extern "C"
-{
-#endif
-
 #if defined( _MSC_VER ) && ( _MSC_VER > 800 )
 #pragma intrinsic(memcpy)
 #pragma intrinsic(memset)
@@ -30,7 +25,7 @@ extern "C"
 
 #if defined(SWAP_BYTES)
 #define bsw_32(p,n) \
-    { int _i = (n); while(_i--) ((uint32_t*)p)[_i] = bswap_32(((uint32_t*)p)[_i]); }
+    { int _i = (n); while(_i--) ((int32U*)p)[_i] = bswap_32(((int32U*)p)[_i]); }
 #else
 #define bsw_32(p,n)
 #endif
@@ -64,8 +59,6 @@ extern "C"
 #define q(v,n)  v##n
 #endif
 
-#ifdef SHA_1
-
 #define one_cycle(v,a,b,c,d,e,f,k,h)		\
 	q(v,e) += rotr32(q(v,a),27) +		\
 	f(q(v,b),q(v,c),q(v,d)) + k + h;	\
@@ -80,13 +73,13 @@ extern "C"
 
 XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::sha1_compile(XANADU_CRYPTO_SHA1_CONTEXT ctx[1]) XANADU_NOTHROW
 {
-	uint32_t    *w = ctx->wbuf;
+	int32U    *w = ctx->wbuf;
 
 #ifdef ARRAY
-	uint32_t    v[5];
+	int32U    v[5];
 	Xanadu::memcpy(v, ctx->hash, sizeof(ctx->hash));
 #else
-	uint32_t    v0, v1, v2, v3, v4;
+	int32U    v0, v1, v2, v3, v4;
 	v0 = ctx->hash[0]; v1 = ctx->hash[1];
 	v2 = ctx->hash[2]; v3 = ctx->hash[3];
 	v4 = ctx->hash[4];
@@ -137,7 +130,7 @@ XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::sha1_compile(XANADU_CRYPTO_SHA1_CONT
 
 XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::sha1_begin(XANADU_CRYPTO_SHA1_CONTEXT ctx[1]) XANADU_NOTHROW
 {
-	Xanadu::memset(ctx, 0, sizeof(sha1_ctx));
+	Xanadu::memset(ctx, 0, sizeof(XANADU_CRYPTO_SHA1_CONTEXT));
 	ctx->hash[0] = 0x67452301;
 	ctx->hash[1] = 0xefcdab89;
 	ctx->hash[2] = 0x98badcfe;
@@ -151,11 +144,11 @@ XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::sha1_begin(XANADU_CRYPTO_SHA1_CONTEX
 /* must not be greater than 2^32 - 1 bits (2^29 - 1 bytes)  */
 XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::sha1_hash(const unsigned char data[], unsigned long len, XANADU_CRYPTO_SHA1_CONTEXT ctx[1]) XANADU_NOTHROW
 {
-	uint32_t pos = (uint32_t)((ctx->count[0] >> 3) & SHA1_MASK);
+	int32U pos = (int32U)((ctx->count[0] >> 3) & SHA1_MASK);
 	const unsigned char *sp = data;
 	unsigned char *w = (unsigned char*)ctx->wbuf;
 #if SHA1_BITS == 1
-	uint32_t ofs = (ctx->count[0] & 7);
+	int32U ofs = (ctx->count[0] & 7);
 #else
 	len <<= 3;
 #endif
@@ -192,7 +185,7 @@ XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::sha1_hash(const unsigned char data[]
 	else    /* data is byte aligned */
 #endif
 	{
-		uint32_t space = SHA1_BLOCK_SIZE - pos;
+		int32U space = SHA1_BLOCK_SIZE - pos;
 
 		while(len >= (space << 3))
 		{
@@ -211,7 +204,7 @@ XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::sha1_hash(const unsigned char data[]
 /// SHA1 final padding and digest calculation
 XANADU_CRYPTO_EXPORT void XANADUAPI Xanadu::sha1_end(unsigned char hval[], XANADU_CRYPTO_SHA1_CONTEXT ctx[1]) XANADU_NOTHROW
 {
-	uint32_t    i = (uint32_t)((ctx->count[0] >> 3) & SHA1_MASK), m1;
+	int32U    i = (int32U)((ctx->count[0] >> 3) & SHA1_MASK), m1;
 
 	/* put bytes in the buffer in an order in which references to   */
 	/* 32-bit words will put bytes with lower addresses into the    */

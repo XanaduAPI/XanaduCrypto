@@ -4,6 +4,7 @@
 #endif
 
 #include "XanaduCryptoHashSHA2.h"
+#include "XanaduCryptoHashTypes.h"
 
 #if defined( _MSC_VER ) && ( _MSC_VER > 800 )
 #pragma intrinsic(memcpy)
@@ -768,7 +769,7 @@ static const uint64_t i512[SHA512_DIGEST_SIZE >> 3] =
 
 static const uint64_t i512_256[SHA512_DIGEST_SIZE >> 3] =
 {
-	li_64(22312194fc2bf72c)
+	li_64(22312194fc2bf72c),
 	li_64(9f555fa3c84c64c2),
 	li_64(2393b86b6f53b151),
 	li_64(963877195940eabd),
@@ -786,7 +787,7 @@ static const uint64_t i512_224[SHA512_DIGEST_SIZE >> 3] =
 	li_64(73e1996689dcd4d6),
 	li_64(1dfab7ae32ff9c82),
 	li_64(679dd514582f9fcf),
-	li_64(0f6d2b697bd44da8)
+	li_64(0f6d2b697bd44da8),
 	li_64(77e36f7304c48942),
 	li_64(3f9d85a86a1d36c8),
 	li_64(1112e6ad91d692a1),
