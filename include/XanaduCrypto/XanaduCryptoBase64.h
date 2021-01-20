@@ -6,11 +6,10 @@
 #define			_XANADU_CRYPTO_BASE64_H_
 
 #include <XanaduCrypto/XanaduCryptoHeader.h>
-#include <XanaduCrypto/XanaduCryptoCommon.h>
 
 /// A Base64 - encoded operation library.
 /// Provides encoding and decoding functions.
-class XANADU_CRYPTO_EXPORT XCryptoBase64 : public XCryptoCommon
+class XANADU_CRYPTO_EXPORT XCryptoBase64
 {
 public:
 	/// Structure
