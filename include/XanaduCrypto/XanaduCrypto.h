@@ -5,7 +5,6 @@
 #ifndef			_XANADU_CRYPTO_H_
 #define			_XANADU_CRYPTO_H_
 
-#include <XanaduCrypto/XanaduCryptoBase64.h>
-#include <XanaduCrypto/XanaduCryptoHash.h>
+#include <XanaduCrypto/XanaduCryptoHeader.h>
 
 #endif /// _XANADU_CRYPTO_H_
