@@ -50,9 +50,6 @@ add_definitions(-DXANADU_CRYPTO_LIB)
 
 #包含源文件
 aux_source_directory(./source SRC)
-aux_source_directory(./source/MD5 SRC)
-aux_source_directory(./source/SHA1 SRC)
-aux_source_directory(./source/SHA2 SRC)
 
 #设置输出目录
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
@@ -70,7 +67,7 @@ endif ()
 add_library(XanaduCrypto SHARED ${SRC})
 
 #设置项目版本号
-set_target_properties(XanaduCrypto PROPERTIES VERSION 0.1.1 SOVERSION 0)
+set_target_properties(XanaduCrypto PROPERTIES VERSION 0.1.2 SOVERSION 0)
 
 #设置安装文件(静态库)
 install(TARGETS XanaduCrypto ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
@@ -83,6 +80,6 @@ install(TARGETS XanaduCrypto LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 #设置安装文件(与库关联的PRIVATE头文件)
 #install(TARGETS XanaduCrypto PRIVATE_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
 #安装头文件
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/XanaduDatabase DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/XanaduCrypto DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
 #安装头文件
 #install(FILES ${PROJECT_SOURCE_DIR}/include/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
