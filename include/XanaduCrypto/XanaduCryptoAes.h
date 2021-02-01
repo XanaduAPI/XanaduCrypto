@@ -1,8 +1,4 @@
-﻿//
-// Created by Administrator on 2021/1/22.
-//
-
-#ifndef			_XANADU_CRYPTO_AES_H_
+﻿#ifndef			_XANADU_CRYPTO_AES_H_
 #define			_XANADU_CRYPTO_AES_H_
 
 #include <XanaduCrypto/XanaduCryptoHeader.h>

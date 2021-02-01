@@ -1,8 +1,4 @@
-﻿//
-// Created by Administrator on 2021/1/20.
-//
-
-#include <XanaduCrypto/XanaduCrypto.h>
+﻿#include <XanaduCrypto/XanaduCrypto.h>
 
 bool XANADUAPI Xanadu_Crypto_Initialize() XANADU_NOTHROW
 {

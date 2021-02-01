@@ -1,8 +1,4 @@
-﻿//
-// Created by Administrator on 2021/1/14.
-//
-
-#include <XanaduCrypto/XanaduCryptoCbc.h>
+﻿#include <XanaduCrypto/XanaduCryptoCbc.h>
 #include "Aes/aes.h"
 
 XCryptoCbc::XCryptoCbc() XANADU_NOTHROW

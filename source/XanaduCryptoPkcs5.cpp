@@ -1,8 +1,4 @@
-﻿//
-// Created by Administrator on 2021/1/14.
-//
-
-#include <XanaduCrypto/XanaduCryptoPkcs5.h>
+﻿#include <XanaduCrypto/XanaduCryptoPkcs5.h>
 #include "Aes/PKCS5_PBKDF2_HMAC.h"
 
 XCryptoPkcs5::XCryptoPkcs5() XANADU_NOTHROW
