@@ -8,10 +8,10 @@ class XANADU_CRYPTO_EXPORT XCryptoAes
 {
 public:
 	/// Structure
-	XCryptoAes() XANADU_NOTHROW;
+	XCryptoAes() noexcept;
 
 	/// Virtual destructor
-	virtual ~XCryptoAes() XANADU_NOTHROW;
+	virtual ~XCryptoAes() noexcept;
 };
 
 #endif /// _XANADU_CRYPTO_AES_H_

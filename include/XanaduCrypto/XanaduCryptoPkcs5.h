@@ -8,14 +8,14 @@ class XANADU_CRYPTO_EXPORT XCryptoPkcs5
 {
 public:
 	/// Structure
-	XCryptoPkcs5() XANADU_NOTHROW;
+	XCryptoPkcs5() noexcept;
 
 	/// Virtual destructor
-	virtual ~XCryptoPkcs5() XANADU_NOTHROW;
+	virtual ~XCryptoPkcs5() noexcept;
 
 public:
 	/// 计算
-	static XByteArray PBKDF2(const XByteArray& _Salt, const XByteArray& _Password, int32U _IterationCount) XANADU_NOTHROW;
+	static XByteArray PBKDF2(const XByteArray& _Salt, const XByteArray& _Password, int32U _IterationCount) noexcept;
 };
 
 #endif /// _XANADU_CRYPTO_PKCS5_H_

@@ -1,9 +1,9 @@
 ﻿#include <XanaduCrypto/XanaduCryptoAes.h>
 
-XCryptoAes::XCryptoAes() XANADU_NOTHROW
+XCryptoAes::XCryptoAes() noexcept
 {
 }
 
-XCryptoAes::~XCryptoAes() XANADU_NOTHROW
+XCryptoAes::~XCryptoAes() noexcept
 {
 }

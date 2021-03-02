@@ -1,18 +1,18 @@
 ﻿#include <XanaduCrypto/XanaduCryptoPkcs5.h>
 #include "Aes/PKCS5_PBKDF2_HMAC.h"
 
-XCryptoPkcs5::XCryptoPkcs5() XANADU_NOTHROW
+XCryptoPkcs5::XCryptoPkcs5() noexcept
 {
 }
 
-XCryptoPkcs5::~XCryptoPkcs5() XANADU_NOTHROW
+XCryptoPkcs5::~XCryptoPkcs5() noexcept
 {
 }
 
 
 
 /// 计算
-XByteArray XCryptoPkcs5::PBKDF2(const XByteArray& _Salt, const XByteArray& _Password, int32U _IterationCount) XANADU_NOTHROW
+XByteArray XCryptoPkcs5::PBKDF2(const XByteArray& _Salt, const XByteArray& _Password, int32U _IterationCount) noexcept
 {
 	char			vBuffer[XANADU_PATH] = { 0 };
 	unsigned char		vOutput[20] = { 0 };

@@ -1,11 +1,11 @@
 ﻿#include <XanaduCrypto/XanaduCrypto.h>
 
-bool XANADUAPI Xanadu_Crypto_Initialize() XANADU_NOTHROW
+bool XANADUAPI Xanadu_Crypto_Initialize() noexcept
 {
 	return true;
 };
 
-void XANADUAPI Xanadu_Crypto_Release() XANADU_NOTHROW
+void XANADUAPI Xanadu_Crypto_Release() noexcept
 {
 };
 
