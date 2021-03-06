@@ -11,7 +11,7 @@ XCryptoPkcs5::~XCryptoPkcs5() noexcept
 
 
 
-/// 计算
+// 计算
 XByteArray XCryptoPkcs5::PBKDF2(const XByteArray& _Salt, const XByteArray& _Password, int32U _IterationCount) noexcept
 {
 	char			vBuffer[XANADU_PATH] = { 0 };

@@ -43,4 +43,4 @@ __attribute((destructor)) void Xanadu_Crypto_Library_Fini(void)
 {
 	Xanadu_Crypto_Release();
 };
-#endif//XANADU_SYSTEM_WINDOWS
+#endif // XANADU_SYSTEM_WINDOWS

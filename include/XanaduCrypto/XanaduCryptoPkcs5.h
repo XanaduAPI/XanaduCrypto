@@ -3,19 +3,19 @@
 
 #include <XanaduCrypto/XanaduCryptoHeader.h>
 
-/// Some encryption and decryption in PKCS5
+// Some encryption and decryption in PKCS5
 class XANADU_CRYPTO_EXPORT XCryptoPkcs5
 {
 public:
-	/// Structure
+	// Structure
 	XCryptoPkcs5() noexcept;
 
-	/// Virtual destructor
+	// Virtual destructor
 	virtual ~XCryptoPkcs5() noexcept;
 
 public:
-	/// 计算
+	// 计算
 	static XByteArray PBKDF2(const XByteArray& _Salt, const XByteArray& _Password, int32U _IterationCount) noexcept;
 };
 
-#endif /// _XANADU_CRYPTO_PKCS5_H_
+#endif // _XANADU_CRYPTO_PKCS5_H_

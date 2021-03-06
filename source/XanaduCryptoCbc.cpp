@@ -11,19 +11,19 @@ XCryptoCbc::~XCryptoCbc() noexcept
 
 
 
-/// 加密ZeroPadding
+// 加密ZeroPadding
 XByteArray XCryptoCbc::EncryptZero(const unsigned char* _Key, const unsigned char* _IV, const void* _Buffer, int32S _Length) noexcept
 {
 	return XCryptoCbc::EncryptZero(_Key, _IV, XByteArray((const char*)_Buffer, _Length));
 }
 
-/// 解密ZeroPadding
+// 解密ZeroPadding
 XByteArray XCryptoCbc::DecryptZero(const unsigned char* _Key, const unsigned char* _IV, const void* _Buffer, int32S _Length) noexcept
 {
 	return XCryptoCbc::DecryptZero(_Key, _IV, XByteArray((const char*)_Buffer, _Length));
 }
 
-/// 加密ZeroPadding
+// 加密ZeroPadding
 XByteArray XCryptoCbc::EncryptZero(const unsigned char* _Key, const unsigned char* _IV, const XByteArray& _Buffer) noexcept
 {
 	XANADU_CHECK_RETURN(_Key, XByteArray());
@@ -56,7 +56,7 @@ XByteArray XCryptoCbc::EncryptZero(const unsigned char* _Key, const unsigned cha
 	return vSync;
 }
 
-/// 解密ZeroPadding
+// 解密ZeroPadding
 XByteArray XCryptoCbc::DecryptZero(const unsigned char* _Key, const unsigned char* _IV, const XByteArray& _Buffer) noexcept
 {
 	XANADU_CHECK_RETURN(_Key, XByteArray());
@@ -93,19 +93,19 @@ XByteArray XCryptoCbc::DecryptZero(const unsigned char* _Key, const unsigned cha
 	return vSync;
 }
 
-/// 加密PKCS5Padding
+// 加密PKCS5Padding
 XByteArray XCryptoCbc::EncryptPKCS5(const unsigned char* _Key, const unsigned char* _IV, const void* _Buffer, int32S _Length) noexcept
 {
 	return XCryptoCbc::EncryptPKCS5(_Key, _IV, XByteArray((const char*)_Buffer, _Length));
 }
 
-/// 解密PKCS5Padding
+// 解密PKCS5Padding
 XByteArray XCryptoCbc::DecryptPKCS5(const unsigned char* _Key, const unsigned char* _IV, const void* _Buffer, int32S _Length) noexcept
 {
 	return XCryptoCbc::DecryptPKCS5(_Key, _IV, XByteArray((const char*)_Buffer, _Length));
 }
 
-/// 加密PKCS5Padding
+// 加密PKCS5Padding
 XByteArray XCryptoCbc::EncryptPKCS5(const unsigned char* _Key, const unsigned char* _IV, const XByteArray& _Buffer) noexcept
 {
 	XANADU_CHECK_RETURN(_Key, XByteArray());
@@ -138,7 +138,7 @@ XByteArray XCryptoCbc::EncryptPKCS5(const unsigned char* _Key, const unsigned ch
 	return vSync;
 }
 
-/// 解密PKCS5Padding
+// 解密PKCS5Padding
 XByteArray XCryptoCbc::DecryptPKCS5(const unsigned char* _Key, const unsigned char* _IV, const XByteArray& _Buffer) noexcept
 {
 	XANADU_CHECK_RETURN(_Key, XByteArray());
@@ -175,19 +175,19 @@ XByteArray XCryptoCbc::DecryptPKCS5(const unsigned char* _Key, const unsigned ch
 	return vSync;
 }
 
-/// 加密PKCS7Padding
+// 加密PKCS7Padding
 XByteArray XCryptoCbc::EncryptPKCS7(const unsigned char* _Key, const unsigned char* _IV, const void* _Buffer, int32S _Length) noexcept
 {
 	return XCryptoCbc::EncryptPKCS7(_Key, _IV, XByteArray((const char*)_Buffer, _Length));
 }
 
-/// 解密PKCS7Padding
+// 解密PKCS7Padding
 XByteArray XCryptoCbc::DecryptPKCS7(const unsigned char* _Key, const unsigned char* _IV, const void* _Buffer, int32S _Length) noexcept
 {
 	return XCryptoCbc::DecryptPKCS7(_Key, _IV, XByteArray((const char*)_Buffer, _Length));
 }
 
-/// 加密PKCS7Padding
+// 加密PKCS7Padding
 XByteArray XCryptoCbc::EncryptPKCS7(const unsigned char* _Key, const unsigned char* _IV, const XByteArray& _Buffer) noexcept
 {
 	XANADU_CHECK_RETURN(_Key, XByteArray());
@@ -220,7 +220,7 @@ XByteArray XCryptoCbc::EncryptPKCS7(const unsigned char* _Key, const unsigned ch
 	return vSync;
 }
 
-/// 解密PKCS7Padding
+// 解密PKCS7Padding
 XByteArray XCryptoCbc::DecryptPKCS7(const unsigned char* _Key, const unsigned char* _IV, const XByteArray& _Buffer) noexcept
 {
 	XANADU_CHECK_RETURN(_Key, XByteArray());

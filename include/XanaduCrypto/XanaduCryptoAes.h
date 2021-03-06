@@ -3,15 +3,15 @@
 
 #include <XanaduCrypto/XanaduCryptoHeader.h>
 
-/// Some encryption and decryption in AES
+// Some encryption and decryption in AES
 class XANADU_CRYPTO_EXPORT XCryptoAes
 {
 public:
-	/// Structure
+	// Structure
 	XCryptoAes() noexcept;
 
-	/// Virtual destructor
+	// Virtual destructor
 	virtual ~XCryptoAes() noexcept;
 };
 
-#endif /// _XANADU_CRYPTO_AES_H_
+#endif // _XANADU_CRYPTO_AES_H_

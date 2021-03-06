@@ -5,4 +5,4 @@
 #include <XanaduCrypto/XanaduCryptoCbc.h>
 #include <XanaduCrypto/XanaduCryptoPkcs5.h>
 
-#endif /// _XANADU_CRYPTO_H_
+#endif // _XANADU_CRYPTO_H_
