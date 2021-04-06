@@ -34,12 +34,12 @@ extern "C" BOOL WINAPI DllMain(HANDLE _HDllHandle, DWORD _Reason, LPVOID _Reserv
 	return TRUE;
 }
 #else
-__attribute((constructor)) void Xanadu_Crypto_Library_Init(void)
+__attribute((constructor)) void _XANADU_CRYPTO_BUILD_SHAREDrary_Init(void)
 {
 	Xanadu_Crypto_Initialize();
 };
 
-__attribute((destructor)) void Xanadu_Crypto_Library_Fini(void)
+__attribute((destructor)) void _XANADU_CRYPTO_BUILD_SHAREDrary_Fini(void)
 {
 	Xanadu_Crypto_Release();
 };
