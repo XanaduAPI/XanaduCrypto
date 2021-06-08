@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.8)
 
 
 # 项目名称
-project(XanaduCrypto VERSION 0.5.0)
+project(XanaduCrypto VERSION 0.6.0)
 
 
 # 输出提示信息
@@ -85,7 +85,7 @@ add_library(${PROJECT_NAME} SHARED ${SRC})
 
 
 # 设置项目属性
-set_target_properties(${PROJECT_NAME} PROPERTIES VERSION 0.5.0 SOVERSION 0)
+set_target_properties(${PROJECT_NAME} PROPERTIES VERSION 0.6.0 SOVERSION 0)
 set_target_properties(${PROJECT_NAME} PROPERTIES DEBUG_POSTFIX D)
 
 
