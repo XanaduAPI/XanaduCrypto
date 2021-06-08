@@ -1,7 +1,7 @@
 ﻿#ifndef			_XANADU_FUNCTION_AES_HEADER_H_
 #define			_XANADU_FUNCTION_AES_HEADER_H_
 
-#include <XanaduCrypto/XanaduCryptoHeader.h>
+#include <XanaduCrypto/Header.h>
 #include <assert.h>
 
 #define		AES_ENCRYPT			1

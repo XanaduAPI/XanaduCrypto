@@ -1,4 +1,4 @@
-﻿#include <XanaduCrypto/XanaduCryptoAes.h>
+﻿#include <XanaduCrypto/Aes.h>
 
 XCryptoAes::XCryptoAes() noexcept
 {

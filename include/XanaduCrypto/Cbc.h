@@ -1,7 +1,7 @@
 ﻿#ifndef			_XANADU_CRYPTO_CBC_H_
 #define			_XANADU_CRYPTO_CBC_H_
 
-#include <XanaduCrypto/XanaduCryptoHeader.h>
+#include <XanaduCrypto/Header.h>
 
 // Some encryption and decryption in CBC
 class XANADU_CRYPTO_EXPORT XCryptoCbc
@@ -51,4 +51,4 @@ public:
 	static XByteArray DecryptPKCS7(const unsigned char* _Key, const unsigned char* _IV, const XByteArray& _Buffer) noexcept;
 };
 
-#endif // _XANADU_CRYPTO_CBC_H_
+#endif

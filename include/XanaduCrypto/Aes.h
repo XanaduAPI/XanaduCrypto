@@ -1,7 +1,7 @@
 ﻿#ifndef			_XANADU_CRYPTO_AES_H_
 #define			_XANADU_CRYPTO_AES_H_
 
-#include <XanaduCrypto/XanaduCryptoHeader.h>
+#include <XanaduCrypto/Header.h>
 
 // Some encryption and decryption in AES
 class XANADU_CRYPTO_EXPORT XCryptoAes
@@ -14,4 +14,4 @@ public:
 	virtual ~XCryptoAes() noexcept;
 };
 
-#endif // _XANADU_CRYPTO_AES_H_
+#endif

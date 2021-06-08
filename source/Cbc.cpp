@@ -1,4 +1,4 @@
-﻿#include <XanaduCrypto/XanaduCryptoCbc.h>
+﻿#include <XanaduCrypto/Cbc.h>
 #include "Aes/aes.h"
 
 XCryptoCbc::XCryptoCbc() noexcept

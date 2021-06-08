@@ -1,4 +1,4 @@
-﻿#include <XanaduCrypto/XanaduCryptoPkcs5.h>
+﻿#include <XanaduCrypto/Pkcs5.h>
 #include "Aes/PKCS5_PBKDF2_HMAC.h"
 
 XCryptoPkcs5::XCryptoPkcs5() noexcept

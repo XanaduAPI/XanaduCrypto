@@ -1,4 +1,4 @@
-﻿#include <XanaduCrypto/XanaduCrypto.h>
+﻿#include <XanaduCrypto/Xanadu.h>
 
 bool XANADUAPI Xanadu_Crypto_Initialize() noexcept
 {

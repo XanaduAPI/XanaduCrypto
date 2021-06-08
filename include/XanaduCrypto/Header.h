@@ -1,26 +1,26 @@
 ﻿#ifndef			_XANADU_CRYPTO_HEADER_H_
 #define			_XANADU_CRYPTO_HEADER_H_
 
-#include <XanaduRuntime/XanaduRuntime.h>
-#include <XanaduCore/XanaduCore.h>
+#include <XanaduRuntime/Xanadu.h>
+#include <XanaduCore/Xanadu.h>
 
 #ifndef			_XANADU_CRYPTO_BUILD_STATIC
 #ifdef			_XANADU_CRYPTO_BUILD_SHARED
-#ifdef XANADU_SYSTEM_WINDOWS
+#if defined(XANADU_SYSTEM_WINDOWS)
 #define			XANADU_CRYPTO_EXPORT					__declspec(dllexport)
 #else
 #define			XANADU_CRYPTO_EXPORT					__attribute__((visibility("default")))
-#endif // XANADU_SYSTEM_WINDOWS
+#endif
 #else
-#ifdef XANADU_SYSTEM_WINDOWS
+#if defined(XANADU_SYSTEM_WINDOWS)
 #define			XANADU_CRYPTO_EXPORT					__declspec(dllimport)
 #else
 #define			XANADU_CRYPTO_EXPORT					__attribute__((visibility("default")))
-#endif // XANADU_SYSTEM_WINDOWS
-#endif // _XANADU_CRYPTO_BUILD_SHARED
+#endif
+#endif
 #else
 #define			XANADU_CRYPTO_EXPORT
-#endif // _XANADU_CRYPTO_BUILD_STATIC
+#endif
 #define			XANADU_CRYPTO_LOCAL
 
-#endif // _XANADU_CRYPTO_HEADER_H_
+#endif

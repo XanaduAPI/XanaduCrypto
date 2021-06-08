@@ -1,7 +1,7 @@
 ﻿#ifndef			_XANADU_FUNCTION_AES_LOCL_HEADER_H_
 #define			_XANADU_FUNCTION_AES_LOCL_HEADER_H_
 
-#include <XanaduCrypto/XanaduCryptoHeader.h>
+#include <XanaduCrypto/Header.h>
 
 # if defined(_MSC_VER) && (defined(_M_IX86) || defined(_M_AMD64) || defined(_M_X64))
 #  define SWAP(x) (_lrotl(x, 8) & 0x00ff00ff | _lrotr(x, 8) & 0xff00ff00)

@@ -1,7 +1,7 @@
 ﻿#ifndef			_XANADU_FUNCTION_AES_MODES_HEADER_H_
 #define			_XANADU_FUNCTION_AES_MODES_HEADER_H_
 
-#include <XanaduCrypto/XanaduCryptoHeader.h>
+#include <XanaduCrypto/Header.h>
 
 typedef void (*block128_f) (const unsigned char _In[16], unsigned char _Out[16], const void* _Key);
 
