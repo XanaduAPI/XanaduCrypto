@@ -10,7 +10,7 @@ void XANADUAPI _Xanadu_Crypto_Release() noexcept
 };
 
 
-#if defined(XANADU_SYSTEM_WINDOWS)
+#if defined(_XANADU_SYSTEM_WINDOWS)
 extern "C" BOOL WINAPI DllMain(HANDLE _HDllHandle, DWORD _Reason, LPVOID _Reserved)
 {
 	XANADU_UNPARAMETER(_HDllHandle);

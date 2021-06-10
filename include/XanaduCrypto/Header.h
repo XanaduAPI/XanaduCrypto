@@ -6,13 +6,13 @@
 
 #ifndef			_XANADU_CRYPTO_BUILD_STATIC
 #ifdef			_XANADU_CRYPTO_BUILD_SHARED
-#if defined(XANADU_SYSTEM_WINDOWS)
+#if defined(_XANADU_SYSTEM_WINDOWS)
 #define			XANADU_CRYPTO_EXPORT					__declspec(dllexport)
 #else
 #define			XANADU_CRYPTO_EXPORT					__attribute__((visibility("default")))
 #endif
 #else
-#if defined(XANADU_SYSTEM_WINDOWS)
+#if defined(_XANADU_SYSTEM_WINDOWS)
 #define			XANADU_CRYPTO_EXPORT					__declspec(dllimport)
 #else
 #define			XANADU_CRYPTO_EXPORT					__attribute__((visibility("default")))
