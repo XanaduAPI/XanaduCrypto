@@ -1,7 +1,6 @@
 ﻿#ifndef			_XANADU_CRYPTO_HEADER_H_
 #define			_XANADU_CRYPTO_HEADER_H_
 
-#include <XanaduRuntime/Xanadu.h>
 #include <XanaduCore/Xanadu.h>
 
 #ifndef			_XANADU_CRYPTO_BUILD_STATIC
