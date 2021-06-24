@@ -22,7 +22,6 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_INSTALL_PREFIX}/lib/cmake)
 
 
 # 项目依赖
-find_package(XanaduRuntime REQUIRED)
 find_package(XanaduCore REQUIRED)
 
 
@@ -32,12 +31,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 # 头文件搜索目录
 include_directories(${PROJECT_SOURCE_DIR}/include)
-include_directories(${XANADU_RUNTIME_INCLUDE})
 include_directories(${XANADU_CORE_INCLUDE})
 
 
 # 链接库搜索目录
-link_directories(${XANADU_RUNTIME_LIBRARY})
 link_directories(${XANADU_CORE_LIBRARY})
 
 
@@ -72,10 +69,8 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 # 链接库
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-	link_libraries(XanaduRuntimeD)
 	link_libraries(XanaduCoreD)
 else ()
-	link_libraries(XanaduRuntime)
 	link_libraries(XanaduCore)
 endif ()
 
