@@ -21,14 +21,7 @@ set shiftwidth=8
 
 ## Comment format
 
-~~~shell
-// <summary>
-// Overview of current call
-// </summary>
-// <param name="_ParameterName">Parameter description</param>
-// <returns>Return to description</returns>
-// <examples>Instructions</examples>
-~~~
+*Consistent with XanaduAPI/XanaduCore*
 
 
 ## Installation / Getting started
@@ -37,7 +30,7 @@ set shiftwidth=8
 
 First install all required dependencies and build tools:
 ```shell
-sudo apt install XanaduRuntime XanaduCore
+sudo apt install XanaduCore
 ```
 
 Then clone the actual project repository:
@@ -59,4 +52,4 @@ sudo make install
 This library is licensed under the [GNU Lesser General Public License v2.1](https://www.gnu.org/licenses/lgpl-2.1.en.html),
 also included in the repository in the `COPYING` file.
 
-README Updated on: 2021-01-20
+README Updated on: 2021-06-24
